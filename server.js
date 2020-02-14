@@ -20,7 +20,7 @@ app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
 // Routes
-require("./routes/api-routes.js")(app);
+require("./routes/api_routes.js")(app);
 
 // Starting our Express app
 db.sequelize.sync({ force: true }).then(function(){
