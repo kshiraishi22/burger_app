@@ -4,28 +4,28 @@
   {{#each burgers}}
   <li>
     <p>
-      {{this.id}}. {{this.burger}}
+      {{this.id}}. {{this.burger_name}}
 
-      <button data-burgerid="{{this.id}}" class="delburger">Devour Burger!</button>
+      <button data-devouredid="{{this.id}}" class="deldevoured">Devour Burger!</button>
     </p>
   </li>
   {{/each}}
 </ul>
 
-<h2>Create a Burger</h2>
-<form id="createburger" class="button-size">
-  <textarea type="text" name="burger"></textarea>
+<h2>List a Burger</h2>
+<form id="createburger_name" class="button-size">
+  <textarea type="text" name="burger_name"></textarea>
   <button type="submit">Save Burger!</button>
 </form>
 
 <script type="text/javascript">
-  $(".delburger").on("click", function(event) {
+  $(".deldevoured").on("click", function(event) {
     // Get the ID from the button.
-    // This is shorthand for $(this).attr("data-burgerid")
-    var id = $(this).data("burgerid");
+    // This is shorthand for $(this).attr("data-devouredid")
+    var id = $(this).data("devouredid");
 
     // Send the DELETE request.
-    $.ajax("/api/burger/" + id, {
+    $.ajax("/api/burgers/" + id, {
       type: "DELETE"
     }).then(
       function() {
@@ -36,19 +36,19 @@
     );
   });
 
-  $("#createburger").on("submit", function(event) {
+  $("#createburger_name").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
     // [name=plan] will find an element with a "name" attribute equal to the string "plan"
-    var newBurger = {
-      burger: $("#createburger [name=burger]").val().trim()
+    var newBurger_name = {
+      burger_name: $("#createburger_name [name=burger_name]").val().trim()
     };
 
     // Send the POST request.
     $.ajax("/api/burgers", {
       type: "POST",
-      data: newBurger
+      data: newBurger_name
     }).then(
       function() {
         console.log("created new burger");
@@ -58,28 +58,6 @@
     );
   });
 
-  $("#updateburger").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
-
-    // Get the ID by finding an element with a "name" attribute equal to the string "id"
-    var id = $("[name=id]").val().trim();
-
-    var updatedBurger = {
-      burger: $("#updateburger [name=burger]").val().trim()
-    };
-
-    // Send the PUT request.
-    $.ajax("/api/burgers/" + id, {
-      type: "PUT",
-      data: updatedBurger
-    }).then(
-      function() {
-        console.log("updated id ", id);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
+   
 </script>
 
