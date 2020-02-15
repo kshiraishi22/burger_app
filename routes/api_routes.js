@@ -1,6 +1,7 @@
 // const db = require("../models");
 // const mysql = require("mysql");
 
+const Burger = require("../models/burger.js")
 // module.exports = function(app) {
 
 //   app.get("/api/burgers", function(req, res) {
