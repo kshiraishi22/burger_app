@@ -2,23 +2,31 @@
 // const mysql = require("mysql");
 
 const Burger = require("../models/burger.js")
-// module.exports = function(app) {
+module.exports = function(app) {
+  // Get all burgers
+  app.get("/api/all", function(req, res) {
+    Burger.findAll({}).then(function(results) {
+      console.log(results)
+      res.json(results)
+  });
+})
 
-//   app.get("/api/burgers", function(req, res) {
-//     db.burgers.findAll({}).then(function(data) {
-//       res.json(data)
-//       console.log(data)
-//     });
-//   });
+  // Add a burger
+  app.post("/api/new", function(req, res) {
+    console.log(req.body);
+    Burger.create({
+      burger_name: req.body.burger_name,
+      devoured: req.body.devoured,
+      created_at: req.body.created_at,
+      updated_at: req.body.updated_at
+    }).then(function(results) {
+      res.end();
+    });
+  });
 
-//   app.post("/api/burgers", function(req, res) {
-//     db.burgers.create({
-//       burger_name: req.body.burger_name,
-//       devoured: req.body.devoured
-//     }).then(function(response) {
-//       res.json(response)
-//     });
-//   });
+};
+  
+
 
 //   app.delete("/api/burgers/:id", function(req, res) {
 //     db.burgers.destroy({
