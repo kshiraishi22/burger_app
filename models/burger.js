@@ -9,6 +9,7 @@ let Burger = sequelize.define("burger", {
     burger_name: Sequelize.STRING,
     devoured: Sequelize.BOOLEAN,
     created_at: Sequelize.DATE,
+    updated_at: Sequelize.DATE
   });
 
   // Syncs with DB
