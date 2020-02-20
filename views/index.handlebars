@@ -1,33 +1,28 @@
 <h1>Burger App!</h1>
 
 <ul>
-  {{#each burgers}}
+  {{!-- {{#each burgers}} --}}
   <li>
-    <p>
-      {{this.id}}. {{this.burger_name}}
+    <p class="burger-container">
+      {{!-- {{this.id}}. {{this.burger_name}} --}}
 
-      <button data-devouredid="{{this.id}}" class="deldevoured">Devour Burger!</button>
+      <button data-devoured-id="{{this.id}}" class="deldevoured">Devour Burger!</button>
     </p>
   </li>
-  {{/each}}
+  {{!-- {{/each}} --}}
 </ul>
 
 <h2>List a Burger</h2>
 <form id="createburger_name" class="button-size">
-  <textarea type="text" name="burger_name"></textarea>
+  <textarea type="text" name="burger_name" class="new_item"></textarea>
   <button type="submit">Save Burger!</button>
 </form>
-
-{{!-- <form action="/api/burgers" method='POST' id="createburger_name" class="button-size">
-  <textarea type="text" name="burger_name"></textarea>
-  <button type="submit">Save Burger!</button>
-</form> --}}
 
 <script type="text/javascript">
   $(".deldevoured").on("click", function(event) {
     // Get the ID from the button.
     // This is shorthand for $(this).attr("data-devouredid")
-    var id = $(this).data("devouredid");
+    let id = $(this).data("devouredid");
 
     // Send the DELETE request.
     $.ajax("/api/burgers/" + id, {
@@ -45,15 +40,17 @@
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
-    // [name=plan] will find an element with a "name" attribute equal to the string "plan"
-    var burger_name = $("#createburger_name [name=burger_name]").val().trim();
-
+    // [name=burger_name] will find an element with a "name" attribute equal to the string "burger_name"
+    let newBurger = {
+      burger_name: $("#createburger_name [name=burger_name]").val().trim()
+    };
+    console.log(newBurger.burger_name);
     // Send the POST request.
     $.ajax( {
       url: "/api/burgers",
       type: "POST",
       data: {
-        burger_name: burger_name
+        newBurger: burger_name
       }
     }).then(
       function() {

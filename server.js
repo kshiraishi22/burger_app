@@ -1,10 +1,11 @@
 // Dependencies
 const express = require("express");
 const exphbs = require("express-handlebars");
+const path = require("path");
 
 // Sets up the Express App
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
 var db = require("./models");
@@ -13,8 +14,12 @@ var db = require("./models");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+//Establishing view path location in MVC
+let viewsPath = path.join(__dirname, "/views")
+app.set('views', viewsPath);
+
 // Sets up handlebars
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({ defaultLayout: "main", layoutsDir: viewsPath + '/layouts' }));
 app.set("view engine", "handlebars");
 
 // Static directory
