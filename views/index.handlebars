@@ -1,5 +1,32 @@
 <h1>Burger App!</h1>
 
+<div class="text-center">
+		<img src="../../public/assets/images/burger.png" alt="burger" class="burger_image">
+	</div>
+
+	<div class="container">
+
+		<div class="row">
+			<div class="col-6">
+				<h2>To Be Eaten</h2>
+				<hr>
+				<div id="waiting-list"></div>
+			</div>
+			<div class="col-6">
+				<h2>Devoured</h2>
+				<hr>
+				<div id="devoured_list"></div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+				<p class="cool-font">Add A New Burger To The Menu and Click Submit!</p>
+				<textarea class="form-control" rows="3" id="chirp-box" placeholder="Enter Burger Here!"></textarea>
+				<button id="chirp-submit" class="btn btn-lg pull-right">Submit!</button>
+			</div>
+		</div>
+
 <ul>
   {{!-- {{#each burgers}} --}}
   <li>
