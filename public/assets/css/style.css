@@ -1,6 +1,5 @@
 body {
   background-color: #ffdb58;
-
 }
 
 .burger {
@@ -9,4 +8,8 @@ body {
   margin-right: auto;
   width: 50%;
 
+}
+
+#uneaten {
+  text-align: center;
 }

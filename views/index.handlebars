@@ -1,5 +1,5 @@
 <div class="text-center">
-    <img src="../public/assets/images/burger.png" alt="burger" class="burger_image">
+    <img src="./assets/images/burger.png" alt="burger" class="burger_image">
 </div>
 
 <center><h1>{{title}}</h1></center>
@@ -14,10 +14,12 @@
       {{#each burgers}}
       {{#unless devoured}}
   <div>
+  <div id="uneaten">
     <h5>{{burger_name}}</h5>
     <form action="/api/burger/{{id}}/{{#if devoured}}0{{else}}1{{/if}}" method="get">
         <input type="submit" value="{{#if devoured}}Order More{{else}}Eat!{{/if}}">
     </form>
+  </div>
 
   </div>
       {{/unless}}
@@ -26,10 +28,10 @@
     </div>
 
 
-<div class="col-6">
+    <div class="col-6">
       <center><h2>Devoured Burgers</h2></center>
       <hr>
-     {{#each burgers}}
+      {{#each burgers}}
 
       {{#if devoured}}
       {{/if}}
