@@ -1,13 +1,12 @@
 # burger_app
 
-Styling:
-- Figure out how to properly style page using css and bootstrap (reference not working)
-- pic not displaying
- 
-HB:
-- need to have burger move into the devoured column instead of disappearing after pressing button
+# About
+This application allows users to input the names of burgers that they would like to eat. When a user types in a burger name and clicks "Submit," the burger will then be displayed on the left side of the page, underneath the "Uneaten Burgers" list with an "Eat!" button. When the user clicks the "Eat!" button for that particular burger, that burger will be moved to the right side of the page, underneath the "Devoured Burgers" list. Each burger that the user submits will be stored in a database.
 
-- Able to explain functionality
-
-
+# Technologies used
+- MySQL
+- Node
+- Express
+- Handlebars
+- Sequelize
 

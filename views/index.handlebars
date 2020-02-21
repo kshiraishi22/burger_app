@@ -1,11 +1,18 @@
-<div class="text-center">
-    <img src="./assets/images/burger.png" alt="burger" class="burger_image">
+{{!-- Burger Picture --}}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="text-center">
+        <img src="./assets/images/burger.png" alt="burger" class="burger_image">
+      </div>
+    </div>
+  </div>
 </div>
 
 <center><h1>{{title}}</h1></center>
 
 <hr>
-
+{{!-- Uneaten Burgers list --}}
 <div class="container">
   <div class="row">
     <div class="col-6">
@@ -13,25 +20,27 @@
       <hr>
       {{#each burgers}}
       {{#unless devoured}}
-  <div>
-    <h5>{{burger_name}}</h5>
-    <form action="/api/burger/{{id}}/{{#if devoured}}0{{else}}1{{/if}}" method="get">
-        <input type="submit" value="{{#if devoured}}Order More{{else}}Eat!{{/if}}">
-    </form>
+      <div class="uneaten">
+        <h5>{{burger_name}}</h5>
+          <form action="/api/burger/{{id}}/{{#if devoured}}0{{else}}1{{/if}}" method="get">
+              <button type="submit" value="Submit">Eat!</button>
+          </form>
+      </div>
 
-  </div>
       {{/unless}}
       {{/each}}
   
     </div>
 
-
-<div class="col-6">
+{{!-- Eaten Burgers list --}}
+    <div class="col-6">
       <center><h2>Devoured Burgers</h2></center>
       <hr>
      {{#each burgers}}
 
       {{#if devoured}}
+        <center><h5>{{burger_name}}</h5></center>
+
       {{/if}}
 
       {{/each}}
