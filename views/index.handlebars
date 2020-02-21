@@ -1,95 +1,35 @@
-<h1>Burger App!</h1>
+<h1>{{title}}</h1>
 
-<div class="text-center">
-		<img src="../../public/assets/images/burger.png" alt="burger" class="burger_image">
-	</div>
+<hr>
 
-	<div class="container">
+<h2>Available Burgers</h2>
+{{#each burgers}}
+{{#unless devoured}}
+<div>
+    {{extra}}
+    <h5>{{burger_name}}</h5>
+    <form action="/api/burger/{{id}}/{{#if devoured}}0{{else}}1{{/if}}" method="get">
+        <input type="submit" value="{{#if devoured}}Order More{{else}}Eat!{{/if}}">
+    </form>
+</div>
+{{/unless}}
+{{/each}}
 
-		<div class="row">
-			<div class="col-6">
-				<h2>To Be Eaten</h2>
-				<hr>
-				<div id="waiting-list"></div>
-			</div>
-			<div class="col-6">
-				<h2>Devoured</h2>
-				<hr>
-				<div id="devoured_list"></div>
-			</div>
-		</div>
+<hr>
 
-		<div class="row">
-			<div class="col-sm-8 col-sm-offset-2">
-				<p class="cool-font">Add A New Burger To The Menu and Click Submit!</p>
-				<textarea class="form-control" rows="3" id="chirp-box" placeholder="Enter Burger Here!"></textarea>
-				<button id="chirp-submit" class="btn btn-lg pull-right">Submit!</button>
-			</div>
-		</div>
+<h2>Eaten Burgers</h2>
+{{#each burgers}}
 
-<ul>
-  {{!-- {{#each burgers}} --}}
-  <li>
-    <p class="burger-container">
-      {{!-- {{this.id}}. {{this.burger_name}} --}}
+{{#if devoured}}
+{{/if}}
 
-      <button data-devoured-id="{{this.id}}" class="deldevoured">Devour Burger!</button>
-    </p>
-  </li>
-  {{!-- {{/each}} --}}
-</ul>
+{{/each}}
 
-<h2>List a Burger</h2>
-<form id="createburger_name" class="button-size">
-  <textarea type="text" name="burger_name" class="new_item"></textarea>
-  <button type="submit">Save Burger!</button>
+<hr>
+
+<form action="/api/burger" method="post">
+    <input type="text" name="burger_name" id=""><br>
+    <input type="submit" value="Create">
 </form>
 
-<script type="text/javascript">
-  $(".deldevoured").on("click", function(event) {
-    // Get the ID from the button.
-    // This is shorthand for $(this).attr("data-devouredid")
-    let id = $(this).data("devouredid");
-
-    // Send the DELETE request.
-    $.ajax("/api/burgers/" + id, {
-      type: "DELETE"
-    }).then(
-      function() {
-        console.log("deleted id ", id);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-
- $("#createburger_name").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
-
-    // [name=burger_name] will find an element with a "name" attribute equal to the string "burger_name"
-    let newBurger = {
-      burger_name: $("#createburger_name [name=burger_name]").val().trim()
-    };
-    console.log(newBurger.burger_name);
-    // Send the POST request.
-    $.ajax( {
-      url: "/api/burgers",
-      type: "POST",
-      data: {
-        newBurger: burger_name
-      }
-    }).then(
-      function() {
-        console.log("created new burger");
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-
-
-
-   
-</script>
-
+<hr>

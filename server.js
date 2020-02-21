@@ -1,7 +1,6 @@
 // Dependencies
 const express = require("express");
 const exphbs = require("express-handlebars");
-const path = require("path");
 
 // Sets up the Express App
 const app = express();
@@ -14,19 +13,15 @@ var db = require("./models");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//Establishing view path location in MVC
-let viewsPath = path.join(__dirname, "/views")
-app.set('views', viewsPath);
-
 // Sets up handlebars
-app.engine("handlebars", exphbs({ defaultLayout: "main", layoutsDir: viewsPath + '/layouts' }));
+app.engine("handlebars", exphbs({ defaultLayout: "main"}))
 app.set("view engine", "handlebars");
 
 // Static directory
 app.use(express.static("public"));
 
 // Routes
-require("./routes/api_routes.js")(app);
+app.use(require("./routes"));
 
 // Starting our Express app
 db.sequelize.sync({ force: true }).then(function(){
