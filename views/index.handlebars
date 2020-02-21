@@ -1,35 +1,50 @@
-<h1>{{title}}</h1>
+<div class="text-center">
+    <img src="../public/assets/images/burger.png" alt="burger" class="burger_image">
+</div>
+
+<center><h1>{{title}}</h1></center>
 
 <hr>
 
-<h2>Available Burgers</h2>
-{{#each burgers}}
-{{#unless devoured}}
-<div>
-    {{extra}}
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <center><h2>Uneaten Burgers</h2></center>
+      <hr>
+      {{#each burgers}}
+      {{#unless devoured}}
+  <div>
     <h5>{{burger_name}}</h5>
     <form action="/api/burger/{{id}}/{{#if devoured}}0{{else}}1{{/if}}" method="get">
         <input type="submit" value="{{#if devoured}}Order More{{else}}Eat!{{/if}}">
     </form>
+
+  </div>
+      {{/unless}}
+      {{/each}}
+  
+    </div>
+
+
+<div class="col-6">
+      <center><h2>Devoured Burgers</h2></center>
+      <hr>
+     {{#each burgers}}
+
+      {{#if devoured}}
+      {{/if}}
+
+      {{/each}}
+  </div>
 </div>
-{{/unless}}
-{{/each}}
 
-<hr>
+<center><p>Type in a burger and add it to the list!</p></center>
 
-<h2>Eaten Burgers</h2>
-{{#each burgers}}
-
-{{#if devoured}}
-{{/if}}
-
-{{/each}}
-
-<hr>
-
-<form action="/api/burger" method="post">
+<center><form action="/api/burger" method="post">
     <input type="text" name="burger_name" id=""><br>
-    <input type="submit" value="Create">
-</form>
+    <input type="submit" value="Submit">
+</form></center>
+
+</div>
 
 <hr>

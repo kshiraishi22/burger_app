@@ -1,12 +1,13 @@
 # burger_app
 
-Router
-Create the router for the app, and export the router at the end of your file.
+Styling:
+- Figure out how to properly style page using css and bootstrap (reference not working)
+- pic not displaying
+ 
+HB:
+- need to have burger move into the devoured column instead of disappearing after pressing button
 
-Handlebars
+- Able to explain functionality
 
-Setup the main.handlebars file so it's able to be used by Handlebars.
 
-Setup the index.handlebars to have the template that Handlebars can render onto.
 
-Create a button in index.handlebars that will submit the user input into the database.
