@@ -1,6 +1,8 @@
+// Dependencies
 const router = require("express").Router()
 const db = require("../../models");
 
+// Get Request
 router.get("/", function (req, res) {
   db.Burger.findAll({
     raw: true

@@ -21,10 +21,11 @@
       {{#each burgers}}
       {{#unless devoured}}
       <div class="uneaten">
-        <h5>{{burger_name}}</h5>
+        <h5>{{burger_name}}
           <form action="/api/burger/{{id}}/{{#if devoured}}0{{else}}1{{/if}}" method="get">
               <button type="submit" value="Submit">Eat!</button>
           </form>
+        </h5>
       </div>
 
       {{/unless}}
@@ -42,7 +43,6 @@
         <center><h5>{{burger_name}}</h5></center>
 
       {{/if}}
-
       {{/each}}
   </div>
 </div>
