@@ -1,6 +1,7 @@
 // Dependencies
 const express = require("express");
 const exphbs = require("express-handlebars");
+const compression = require("compression");
 
 // Sets up the Express App
 const app = express();
@@ -12,6 +13,8 @@ var db = require("./models");
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(compression());
 
 // Sets up handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main"}))
