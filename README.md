@@ -1,6 +1,9 @@
 # burger_app
 
-# About
+# Description
+
+![alt text](./public/assets/gif/burger_app.gif "Title")
+
 This application allows users to input the names of burgers that they would like to eat and move burgers from one list to another based on whether that burger has been consumed. 
 
 # How To
