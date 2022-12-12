@@ -19,7 +19,7 @@
   "homepage": "https://github.com/kshiraishi22/burger_app#readme",
   "dependencies": {
     "compression": "^1.7.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-handlebars": "^3.1.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
